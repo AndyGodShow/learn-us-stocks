@@ -1,7 +1,9 @@
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
-import { articles } from "@/lib/articles";
+import { getAllArticles } from "@/lib/articles";
 
 export default function ArticlesPage() {
+  const articles = getAllArticles();
+
   return (
     <main>
       <section className="pageIntro">

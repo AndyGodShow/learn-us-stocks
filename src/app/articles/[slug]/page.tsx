@@ -1,5 +1,6 @@
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { articles, getArticleBySlug } from "@/lib/articles";
+import { getArticleBySlug, getArticleSlugs } from "@/lib/articles";
 import styles from "./page.module.css";
 
 type ArticleDetailPageProps = {
@@ -9,8 +10,8 @@ type ArticleDetailPageProps = {
 };
 
 export function generateStaticParams() {
-  return articles.map((article) => ({
-    slug: article.slug,
+  return getArticleSlugs().map((slug) => ({
+    slug,
   }));
 }
 
@@ -44,9 +45,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
         <h1>{article.title}</h1>
         <p className={styles.summary}>{article.summary}</p>
         <div className={styles.content}>
-          {article.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <MDXRemote source={article.content} />
         </div>
       </article>
     </main>

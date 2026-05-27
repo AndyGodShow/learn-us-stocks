@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
-import { articles } from "@/lib/articles";
+import { getAllArticles } from "@/lib/articles";
 import styles from "./page.module.css";
 
 const entries = [
@@ -12,6 +12,8 @@ const entries = [
 ];
 
 export default function Home() {
+  const articles = getAllArticles();
+
   return (
     <main>
       <section className={styles.hero}>
