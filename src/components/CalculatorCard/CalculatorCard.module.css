@@ -1,0 +1,58 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--surface);
+}
+
+.header h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.fields {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.fields label {
+  display: grid;
+  gap: 6px;
+}
+
+.fields span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.fields input {
+  width: 100%;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  background: #07090d;
+  color: var(--text);
+  outline: none;
+}
+
+.fields input:focus {
+  border-color: var(--accent);
+}
+
+.result {
+  display: block;
+  min-height: 44px;
+  border: 1px solid rgba(110, 231, 183, 0.28);
+  border-radius: var(--radius);
+  padding: 12px;
+  color: var(--accent);
+  background: rgba(110, 231, 183, 0.08);
+  line-height: 1.5;
+}
