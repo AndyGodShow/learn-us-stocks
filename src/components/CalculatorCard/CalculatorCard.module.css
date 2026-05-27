@@ -18,6 +18,17 @@
   line-height: 1.7;
 }
 
+.explanation {
+  margin: 14px 0 0;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  color: var(--muted-strong);
+  background: var(--info-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .fields {
   display: grid;
   gap: 12px;
@@ -59,4 +70,26 @@
   color: var(--accent);
   background: var(--accent-soft);
   line-height: 1.5;
+}
+
+.result dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.result div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.result dt {
+  color: var(--muted-strong);
+}
+
+.result dd {
+  margin: 0;
+  color: var(--accent);
+  text-align: right;
 }
