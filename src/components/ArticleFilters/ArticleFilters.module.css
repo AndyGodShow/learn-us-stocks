@@ -1,0 +1,82 @@
+.filters {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 22px;
+  padding: 16px;
+  background: rgba(14, 20, 28, 0.92);
+}
+
+.searchRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.searchField,
+.selectRow label {
+  display: grid;
+  gap: 7px;
+}
+
+.filters span {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 9px 11px;
+  background: #07090d;
+  color: var(--text);
+  outline: none;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--accent);
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 42px;
+  border-radius: var(--radius);
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.primaryButton {
+  border: 1px solid rgba(110, 231, 183, 0.48);
+  background: rgba(110, 231, 183, 0.12);
+  color: var(--accent);
+}
+
+.secondaryButton {
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--muted-strong);
+}
+
+.selectRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resultCount {
+  color: var(--muted-strong);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 720px) {
+  .searchRow,
+  .selectRow {
+    grid-template-columns: 1fr;
+  }
+}

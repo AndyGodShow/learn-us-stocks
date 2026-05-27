@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { getArticleBySlug, getArticleSlugs } from "@/lib/articles";
+import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
+import { getArticleBySlug, getArticleSlugs, getRelatedArticles } from "@/lib/articles";
 import styles from "./page.module.css";
 
 type ArticleDetailPageProps = {
@@ -33,6 +34,8 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
     notFound();
   }
 
+  const relatedArticles = getRelatedArticles(article, 3);
+
   return (
     <main>
       <article className={styles.article}>
@@ -48,6 +51,16 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           <MDXRemote source={article.content} />
         </div>
       </article>
+      {relatedArticles.length > 0 ? (
+        <section className={styles.related}>
+          <h2>继续阅读</h2>
+          <div className="cardGrid">
+            {relatedArticles.map((relatedArticle) => (
+              <ArticleCard article={relatedArticle} key={relatedArticle.slug} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }
