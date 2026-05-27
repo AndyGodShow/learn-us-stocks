@@ -2,7 +2,9 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  background: var(--surface);
+  background:
+    linear-gradient(180deg, rgba(17, 26, 36, 0.94), rgba(14, 20, 28, 0.94)),
+    var(--surface);
 }
 
 .top {
@@ -20,7 +22,11 @@
 }
 
 .top span {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 5px 8px;
   color: var(--muted-strong);
+  background: rgba(7, 9, 13, 0.38);
 }
 
 .rows {
@@ -36,7 +42,7 @@
 
 .rows dt {
   margin-bottom: 5px;
-  color: var(--muted);
+  color: var(--accent-strong);
   font-size: 0.86rem;
 }
 
@@ -58,5 +64,13 @@
   border-radius: var(--radius);
   padding: 6px 8px;
   color: var(--accent-strong);
+  background: var(--info-soft);
   font-size: 0.86rem;
+}
+
+@media (max-width: 520px) {
+  .top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

@@ -47,6 +47,13 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
         </div>
         <h1>{article.title}</h1>
         <p className={styles.summary}>{article.summary}</p>
+        {article.tags.length > 0 ? (
+          <div className={styles.tags} aria-label="文章标签">
+            {article.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        ) : null}
         <div className={styles.content}>
           <MDXRemote source={article.content} />
         </div>

@@ -6,12 +6,16 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  background: linear-gradient(180deg, rgba(17, 26, 36, 0.96), rgba(14, 20, 28, 0.96));
+  background:
+    linear-gradient(180deg, rgba(17, 26, 36, 0.96), rgba(14, 20, 28, 0.96)),
+    var(--surface);
 }
 
 .card:hover {
   border-color: var(--border-strong);
-  background: var(--surface-soft);
+  background:
+    linear-gradient(180deg, rgba(21, 31, 43, 0.98), rgba(14, 20, 28, 0.98)),
+    var(--surface-soft);
 }
 
 .meta,
@@ -22,6 +26,11 @@
   gap: 10px;
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+.meta {
+  border-bottom: 1px solid rgba(49, 67, 87, 0.5);
+  padding-bottom: 12px;
 }
 
 .meta span:first-child {
@@ -54,4 +63,18 @@
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.3;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.footer {
+  border-top: 1px solid rgba(49, 67, 87, 0.5);
+  padding-top: 12px;
+}
+
+@media (max-width: 520px) {
+  .meta,
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

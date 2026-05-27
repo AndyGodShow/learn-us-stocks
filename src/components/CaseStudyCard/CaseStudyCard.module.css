@@ -2,7 +2,9 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  background: var(--surface);
+  background:
+    linear-gradient(180deg, rgba(17, 26, 36, 0.94), rgba(14, 20, 28, 0.94)),
+    var(--surface);
 }
 
 .top {
@@ -27,6 +29,7 @@
   border-radius: var(--radius);
   padding: 6px 8px;
   color: var(--accent);
+  background: rgba(7, 9, 13, 0.45);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
@@ -47,5 +50,12 @@
   border-radius: var(--radius);
   padding: 6px 8px;
   color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
   font-size: 0.88rem;
+}
+
+@media (max-width: 520px) {
+  .top {
+    flex-direction: column;
+  }
 }
