@@ -215,3 +215,7 @@ export const caseStudies: CaseStudy[] = [
     relatedArticles: ["moat-profit-cash-flow", "revenue-gross-profit-net-income", "us-stock-market-structure"],
   },
 ];
+
+export function getCaseStudyByTicker(ticker: string) {
+  return caseStudies.find((study) => study.ticker.toLowerCase() === ticker.toLowerCase());
+}

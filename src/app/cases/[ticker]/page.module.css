@@ -1,0 +1,153 @@
+.page {
+  width: min(calc(100% - 64px), 860px);
+  padding-top: 42px;
+}
+
+.navRow {
+  margin-bottom: 22px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: var(--muted-strong);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.backLink:hover {
+  border-color: rgba(110, 231, 183, 0.35);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.article {
+  width: 100%;
+}
+
+.header {
+  border-bottom: 1px solid rgba(49, 67, 87, 0.72);
+  padding-bottom: 28px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.meta span {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 8px;
+}
+
+.meta span:first-child {
+  border-color: rgba(110, 231, 183, 0.28);
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.article h1 {
+  margin: 18px 0 12px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.focus {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.summary {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 1.04rem;
+  line-height: 1.85;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tags span,
+.relatedLinks a {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.content {
+  padding-top: 28px;
+}
+
+.content section + section {
+  margin-top: 30px;
+}
+
+.content h2 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 1.45rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.content p {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
+.content ul,
+.content ol {
+  margin: 0;
+  padding-left: 24px;
+  color: var(--muted-strong);
+  line-height: 1.9;
+}
+
+.content li {
+  margin: 6px 0;
+}
+
+.relatedLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.relatedLinks a {
+  text-decoration: none;
+}
+
+.relatedLinks a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(calc(100% - 28px), 860px);
+    padding-top: 28px;
+  }
+}
