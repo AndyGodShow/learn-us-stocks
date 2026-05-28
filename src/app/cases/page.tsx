@@ -1,14 +1,21 @@
 import { CaseStudyCard } from "@/components/CaseStudyCard/CaseStudyCard";
 import { caseStudies } from "@/lib/cases";
+import styles from "./page.module.css";
 
 export default function CasesPage() {
   return (
     <main>
       <section className="pageIntro">
-        <h1>公司研究案例</h1>
-        <p>用典型公司练习不同类型的研究问题：成长、周期、现金流、竞争格局和估值预期。</p>
+        <h1>公司案例训练场</h1>
+        <p>用真实公司拆解商业模式、财务变量、估值逻辑和常见误区。</p>
       </section>
-      <section className="cardGrid">
+      <section className={styles.trainingNote}>
+        <p>
+          这些案例不是买卖建议，也不提供具体价格判断或评级。每张卡片都围绕一条训练链条：
+          业务变化如何进入财务变量，财务变量如何影响估值预期，以及什么风险会让原有分析失效。
+        </p>
+      </section>
+      <section className={styles.caseGrid}>
         {caseStudies.map((study) => (
           <CaseStudyCard study={study} key={study.ticker} />
         ))}
