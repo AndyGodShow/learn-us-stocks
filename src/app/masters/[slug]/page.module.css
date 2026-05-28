@@ -54,6 +54,17 @@
   font-weight: 400;
 }
 
+.category {
+  display: inline-flex;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 999px;
+  margin: 4px 0 16px;
+  padding: 5px 9px;
+  color: var(--accent-strong);
+  font-size: 0.84rem;
+  background: var(--info-soft);
+}
+
 .summary {
   max-width: 800px;
   margin: 0;
@@ -125,6 +136,49 @@
   background: rgba(14, 20, 28, 0.72);
 }
 
+.lessonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 12px;
+}
+
+.lessonCard,
+.caseBox,
+.sourceItem {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 15px;
+  background: rgba(14, 20, 28, 0.72);
+}
+
+.lessonCard h3,
+.caseBox h3 {
+  margin: 0 0 9px;
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.lessonCard small {
+  display: block;
+  border-top: 1px solid rgba(49, 67, 87, 0.56);
+  margin-top: 12px;
+  padding-top: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.caseBox strong {
+  display: block;
+  border-left: 3px solid var(--accent);
+  margin-top: 14px;
+  padding-left: 12px;
+  color: var(--muted-strong);
+  font-weight: 600;
+  line-height: 1.7;
+}
+
 .articleLinks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
@@ -155,6 +209,36 @@
   color: var(--text);
   font-size: 0.98rem;
   line-height: 1.5;
+}
+
+.sourceList {
+  display: grid;
+  gap: 12px;
+}
+
+.sourceItem span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.sourceItem a,
+.sourceItem strong {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.sourceItem a:hover {
+  color: var(--accent-strong);
+}
+
+.sourceItem p {
+  margin-top: 8px;
+  font-size: 0.94rem;
+  line-height: 1.7;
 }
 
 @media (max-width: 640px) {

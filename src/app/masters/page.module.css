@@ -1,0 +1,31 @@
+.guide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 20px;
+}
+
+.guide div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: rgba(14, 20, 28, 0.72);
+}
+
+.guide span {
+  color: var(--accent);
+  font-size: 0.86rem;
+}
+
+.guide p {
+  margin: 8px 0 0;
+  color: var(--muted-strong);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .guide {
+    grid-template-columns: 1fr;
+  }
+}

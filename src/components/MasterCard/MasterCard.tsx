@@ -13,6 +13,7 @@ export function MasterCard({ master }: MasterCardProps) {
         <p>{master.chineseName}</p>
         <span>{master.name}</span>
       </div>
+      <span className={styles.category}>{master.category}</span>
       <h2>{master.title}</h2>
       <p className={styles.summary}>{master.summary}</p>
       <div className={styles.tags} aria-label={`${master.chineseName} 核心主题`}>
