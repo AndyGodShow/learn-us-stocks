@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticleBySlug } from "@/lib/articles";
-import { getCaseStudyByTicker } from "@/lib/cases";
+import { caseStudies } from "@/lib/cases";
 import { getIndustryBySlug, getIndustrySlugs } from "@/lib/industries";
 import styles from "./page.module.css";
 
@@ -43,7 +43,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
     .map((articleSlug) => getArticleBySlug(articleSlug))
     .filter((article) => article !== undefined);
   const relatedCases = industry.relatedCases
-    .map((ticker) => getCaseStudyByTicker(ticker))
+    .map((ticker) => caseStudies.find((study) => study.ticker.toLowerCase() === ticker.toLowerCase()))
     .filter((study) => study !== undefined);
 
   return (
