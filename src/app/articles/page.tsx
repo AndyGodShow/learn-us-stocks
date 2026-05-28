@@ -3,8 +3,8 @@ import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import {
   getArticleCategories,
   getArticleDifficulties,
-  getArticleTags,
   searchArticles,
+  type ArticleSort,
   type ArticleSearchParams,
 } from "@/lib/articles";
 
@@ -17,13 +17,19 @@ function readParam(searchParams: Record<string, string | string[] | undefined>, 
   return Array.isArray(value) ? value[0] : value;
 }
 
+function readSort(searchParams: Record<string, string | string[] | undefined>): ArticleSort | undefined {
+  const sort = readParam(searchParams, "sort");
+
+  return sort === "path" || sort === "latest" || sort === "recommended" ? sort : undefined;
+}
+
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
   const resolvedSearchParams = await searchParams;
   const filters: ArticleSearchParams = {
     query: readParam(resolvedSearchParams, "query"),
     category: readParam(resolvedSearchParams, "category"),
     difficulty: readParam(resolvedSearchParams, "difficulty"),
-    tag: readParam(resolvedSearchParams, "tag"),
+    sort: readSort(resolvedSearchParams),
   };
   const articles = searchArticles(filters);
 
@@ -31,14 +37,13 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
     <main>
       <section className="pageIntro">
         <h1>文章</h1>
-        <p>用短篇内容拆解美股学习中的关键概念。每篇文章都对应一个可复用的分析问题。</p>
+        <p>用短篇内容拆解美股学习中的关键概念。默认先入门，再中级，最后进阶。</p>
       </section>
       <ArticleFilters
         categories={getArticleCategories()}
         difficulties={getArticleDifficulties()}
         initialFilters={filters}
         resultCount={articles.length}
-        tags={getArticleTags()}
       />
       {articles.length > 0 ? (
         <section className="cardGrid">
@@ -49,7 +54,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
       ) : (
         <section className="pageIntro">
           <h2>没有找到匹配文章</h2>
-          <p>可以减少关键词，或先清空分类、难度和标签筛选。</p>
+          <p>可以减少关键词，或先清空分类和难度筛选。</p>
         </section>
       )}
     </main>

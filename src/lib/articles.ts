@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 export type ArticleDifficulty = "入门" | "中级" | "进阶";
+export type ArticleSort = "recommended" | "path" | "latest";
 
 export type Article = {
   slug: string;
@@ -10,6 +11,7 @@ export type Article = {
   category: string;
   summary: string;
   difficulty: ArticleDifficulty;
+  readingOrder: number;
   readingTime: string;
   publishedAt: string;
   tags: string[];
@@ -18,7 +20,7 @@ export type Article = {
 };
 
 const articlesDirectory = path.join(process.cwd(), "content", "articles");
-const articleCategoryOrder = ["基础知识", "财报", "估值", "宏观", "行业", "交易复盘"];
+const articleCategoryOrder = ["市场基础", "财报", "估值", "宏观", "行业研究", "投资经典精读", "交易复盘"];
 const articleDifficultyOrder: ArticleDifficulty[] = ["入门", "中级", "进阶"];
 
 type ArticleFrontmatter = Omit<Article, "bodyText" | "content">;
@@ -28,6 +30,7 @@ export type ArticleSearchParams = {
   category?: string;
   difficulty?: string;
   tag?: string;
+  sort?: ArticleSort;
 };
 
 function isArticleDifficulty(value: unknown): value is ArticleDifficulty {
@@ -64,6 +67,16 @@ function readTags(data: Record<string, unknown>): string[] {
   });
 }
 
+function readReadingOrder(data: Record<string, unknown>, fileName: string): number {
+  const value = data.readingOrder;
+
+  if (typeof value !== "number" || !Number.isInteger(value) || value < 1) {
+    throw new Error(`Article "${fileName}" frontmatter field "readingOrder" must be a positive integer.`);
+  }
+
+  return value;
+}
+
 function extractBodyText(content: string): string {
   return content
     .replace(/```[\s\S]*?```/g, " ")
@@ -96,6 +109,7 @@ function readArticleFile(fileName: string): Article {
     category: readStringField(frontmatter, "category"),
     summary: readStringField(frontmatter, "summary"),
     difficulty,
+    readingOrder: readReadingOrder(frontmatter, fileName),
     readingTime: readStringField(frontmatter, "readingTime"),
     publishedAt: readStringField(frontmatter, "publishedAt"),
     tags: readTags(frontmatter),
@@ -112,6 +126,40 @@ function mergeWithPreferredOrder(preferred: string[], values: string[]): string[
   const extraValues = uniqueSorted(values.filter((value) => !preferred.includes(value)));
 
   return [...preferred, ...extraValues];
+}
+
+function getCategoryRank(category: string): number {
+  const index = articleCategoryOrder.indexOf(category);
+
+  return index === -1 ? articleCategoryOrder.length : index;
+}
+
+function getDifficultyRank(difficulty: ArticleDifficulty): number {
+  return articleDifficultyOrder.indexOf(difficulty);
+}
+
+function sortArticles(articles: Article[], sort: ArticleSort = "recommended"): Article[] {
+  return [...articles].sort((left, right) => {
+    if (sort === "latest") {
+      const publishedComparison = right.publishedAt.localeCompare(left.publishedAt);
+
+      return publishedComparison || left.readingOrder - right.readingOrder;
+    }
+
+    if (sort === "path") {
+      const categoryComparison = getCategoryRank(left.category) - getCategoryRank(right.category);
+
+      if (categoryComparison !== 0) {
+        return categoryComparison;
+      }
+
+      const difficultyComparison = getDifficultyRank(left.difficulty) - getDifficultyRank(right.difficulty);
+
+      return difficultyComparison || left.readingOrder - right.readingOrder;
+    }
+
+    return left.readingOrder - right.readingOrder;
+  });
 }
 
 export function getArticleSlugs(): string[] {
@@ -133,10 +181,9 @@ export function getArticleBySlug(slug: string): Article | undefined {
 }
 
 export function getAllArticles(): Article[] {
-  return getArticleSlugs()
+  return sortArticles(getArticleSlugs()
     .map((slug) => getArticleBySlug(slug))
-    .filter((article): article is Article => article !== undefined)
-    .sort((left, right) => right.publishedAt.localeCompare(left.publishedAt));
+    .filter((article): article is Article => article !== undefined));
 }
 
 export function getArticleCategories(): string[] {
@@ -162,8 +209,9 @@ export function searchArticles(params: ArticleSearchParams): Article[] {
   const category = params.category?.trim();
   const difficulty = params.difficulty?.trim();
   const tag = params.tag?.trim();
+  const sort = params.sort;
 
-  return getAllArticles().filter((article) => {
+  const filteredArticles = getAllArticles().filter((article) => {
     const queryMatched =
       !query ||
       [article.title, article.summary, article.category, article.bodyText, ...article.tags]
@@ -178,6 +226,8 @@ export function searchArticles(params: ArticleSearchParams): Article[] {
       (!tag || article.tags.includes(tag))
     );
   });
+
+  return sortArticles(filteredArticles, sort);
 }
 
 export function getRelatedArticles(article: Article, limit: number): Article[] {
@@ -198,7 +248,7 @@ export function getRelatedArticles(article: Article, limit: number): Article[] {
         return right.score - left.score;
       }
 
-      return right.article.publishedAt.localeCompare(left.article.publishedAt);
+      return left.article.readingOrder - right.article.readingOrder;
     })
     .slice(0, limit)
     .map((candidate) => candidate.article);

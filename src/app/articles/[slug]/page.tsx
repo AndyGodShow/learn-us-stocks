@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
@@ -37,23 +38,31 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   const relatedArticles = getRelatedArticles(article, 3);
 
   return (
-    <main>
+    <main className={styles.page}>
+      <div className={styles.navRow}>
+        <Link className={styles.backLink} href="/articles">
+          ← 返回文章
+        </Link>
+      </div>
       <article className={styles.article}>
-        <div className={styles.meta}>
-          <span>{article.category}</span>
-          <span>{article.difficulty}</span>
-          <span>{article.readingTime}</span>
-          <time dateTime={article.publishedAt}>{article.publishedAt}</time>
-        </div>
-        <h1>{article.title}</h1>
-        <p className={styles.summary}>{article.summary}</p>
-        {article.tags.length > 0 ? (
-          <div className={styles.tags} aria-label="文章标签">
-            {article.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
+        <header className={styles.header}>
+          <div className={styles.meta}>
+            <span>第 {article.readingOrder} 篇</span>
+            <span>{article.category}</span>
+            <span>{article.difficulty}</span>
+            <span>{article.readingTime}</span>
+            <time dateTime={article.publishedAt}>{article.publishedAt}</time>
           </div>
-        ) : null}
+          <h1>{article.title}</h1>
+          <p className={styles.summary}>{article.summary}</p>
+          {article.tags.length > 0 ? (
+            <div className={styles.tags} aria-label="文章标签">
+              {article.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          ) : null}
+        </header>
         <div className={styles.content}>
           <MDXRemote source={article.content} />
         </div>

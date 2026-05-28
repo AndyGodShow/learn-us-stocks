@@ -10,6 +10,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link className={styles.card} href={`/articles/${article.slug}`}>
       <div className={styles.meta}>
+        <span>第 {article.readingOrder} 篇</span>
         <span>{article.category}</span>
         <span>{article.difficulty}</span>
       </div>

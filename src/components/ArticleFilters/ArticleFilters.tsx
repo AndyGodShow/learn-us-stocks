@@ -5,10 +5,15 @@ import { useState } from "react";
 import type { ArticleSearchParams } from "@/lib/articles";
 import styles from "./ArticleFilters.module.css";
 
+const sortOptions = [
+  { label: "推荐阅读顺序", value: "recommended" },
+  { label: "按领域路径", value: "path" },
+  { label: "按最新发布", value: "latest" },
+] as const;
+
 type ArticleFiltersProps = {
   categories: string[];
   difficulties: string[];
-  tags: string[];
   initialFilters: ArticleSearchParams;
   resultCount: number;
 };
@@ -29,7 +34,6 @@ function buildSearchPath(filters: ArticleSearchParams): string {
 export function ArticleFilters({
   categories,
   difficulties,
-  tags,
   initialFilters,
   resultCount,
 }: ArticleFiltersProps) {
@@ -66,7 +70,7 @@ export function ArticleFilters({
                 applyFilters();
               }
             }}
-            placeholder="标题、摘要、分类、标签或正文关键词"
+            placeholder="标题、摘要、分类或正文关键词"
           />
         </label>
         <button className={styles.primaryButton} type="button" onClick={applyFilters}>
@@ -104,12 +108,11 @@ export function ArticleFilters({
           </select>
         </label>
         <label>
-          <span>标签</span>
-          <select value={filters.tag ?? ""} onChange={(event) => updateFilter("tag", event.target.value)}>
-            <option value="">全部标签</option>
-            {tags.map((tag) => (
-              <option key={tag} value={tag}>
-                {tag}
+          <span>排序</span>
+          <select value={filters.sort ?? "recommended"} onChange={(event) => updateFilter("sort", event.target.value)}>
+            {sortOptions.map((sortOption) => (
+              <option key={sortOption.value} value={sortOption.value}>
+                {sortOption.label}
               </option>
             ))}
           </select>
