@@ -4,6 +4,7 @@ import styles from "./SiteHeader.module.css";
 const navItems = [
   { href: "/learn", label: "学习路线" },
   { href: "/articles", label: "文章" },
+  { href: "/masters", label: "人物" },
   { href: "/glossary", label: "术语表" },
   { href: "/cases", label: "案例" },
   { href: "/reviews", label: "复盘" },

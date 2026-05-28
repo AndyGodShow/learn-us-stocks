@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 const entries = [
   { href: "/learn", title: "学习路线", description: "按市场、财报、估值、宏观、行业和复盘逐步推进。", label: "Path" },
   { href: "/articles", title: "文章库", description: "用短文章建立可复用的基础概念和分析框架。", label: "Library" },
+  { href: "/masters", title: "人物地图", description: "拆解经典投资人物的思想框架、适用边界和常见误读。", label: "Masters" },
   { href: "/glossary", title: "术语表", description: "快速对照财报、研报和公司公告里的核心英文指标。", label: "Terms" },
   { href: "/cases", title: "公司案例", description: "从真实公司出发练习商业模式、财报和估值分析。", label: "Cases" },
   { href: "/reviews", title: "交易复盘", description: "使用模板记录假设、执行、错误和下一步改进。", label: "Review" },
@@ -59,7 +60,7 @@ export default function Home() {
         ))}
       </section>
 
-      <h2 className="sectionTitle">最新文章</h2>
+      <h2 className="sectionTitle">推荐起点</h2>
       <section className="cardGrid">
         {articles.slice(0, 3).map((article) => (
           <ArticleCard article={article} key={article.slug} />
