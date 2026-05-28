@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 const entries = [
   { href: "/learn", title: "学习路线", description: "按市场、财报、估值、宏观、行业和复盘逐步推进。", label: "Path" },
   { href: "/articles", title: "文章库", description: "用短文章建立可复用的基础概念和分析框架。", label: "Library" },
+  { href: "/industries", title: "行业地图", description: "从商业模式、产业链、关键指标和估值逻辑理解不同美股板块。", label: "Industries" },
   { href: "/masters", title: "人物地图", description: "拆解经典投资人物的思想框架、适用边界和常见误读。", label: "Masters" },
   { href: "/glossary", title: "术语表", description: "快速对照财报、研报和公司公告里的核心英文指标。", label: "Terms" },
   { href: "/cases", title: "公司案例", description: "从真实公司出发练习商业模式、财报和估值分析。", label: "Cases" },

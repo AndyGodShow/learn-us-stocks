@@ -1,0 +1,210 @@
+.navRow {
+  margin-bottom: 18px;
+}
+
+.backLink {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: var(--muted-strong);
+  font-size: 0.9rem;
+  background: rgba(14, 20, 28, 0.72);
+}
+
+.backLink:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero {
+  border-bottom: 1px solid rgba(49, 67, 87, 0.56);
+  padding-bottom: 24px;
+}
+
+.hero p {
+  margin: 0 0 10px;
+  color: var(--accent-strong);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 5.4vw, 4.6rem);
+  line-height: 1.06;
+  letter-spacing: 0;
+}
+
+.hero span {
+  display: block;
+  max-width: 820px;
+  color: var(--muted-strong);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.overview article,
+.listSection,
+.companySection,
+.learningSection,
+.related > div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(17, 26, 36, 0.94), rgba(14, 20, 28, 0.94)),
+    var(--surface);
+}
+
+.overview article {
+  padding: 16px;
+}
+
+.overview h2,
+.listSection h2,
+.companySection h2,
+.learningSection h2,
+.related h2 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.overview p,
+.learningSection p,
+.related p {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.listSection {
+  padding: 16px;
+}
+
+.listSection ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.listSection li {
+  border: 1px solid rgba(49, 67, 87, 0.78);
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.companySection,
+.learningSection {
+  margin-top: 14px;
+  padding: 16px;
+}
+
+.companyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 10px;
+}
+
+.companyCard {
+  border: 1px solid rgba(49, 67, 87, 0.78);
+  border-radius: 6px;
+  padding: 12px;
+  background: rgba(7, 9, 13, 0.34);
+}
+
+.companyCard strong,
+.companyCard span {
+  display: block;
+}
+
+.companyCard strong {
+  color: var(--text);
+}
+
+.companyCard span {
+  margin-top: 4px;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.companyCard p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.related {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.related > div {
+  padding: 16px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.linkList a {
+  border: 1px solid rgba(49, 67, 87, 0.78);
+  border-radius: 6px;
+  padding: 9px 10px;
+  color: var(--muted-strong);
+  background: rgba(7, 9, 13, 0.32);
+}
+
+.linkList a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.disclaimer {
+  margin: 22px 0 0;
+  border: 1px solid rgba(250, 204, 21, 0.28);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  color: var(--muted-strong);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  background: rgba(250, 204, 21, 0.06);
+}
+
+@media (max-width: 860px) {
+  .overview,
+  .sections,
+  .related {
+    grid-template-columns: 1fr;
+  }
+}
