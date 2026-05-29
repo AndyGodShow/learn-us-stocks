@@ -8,6 +8,11 @@ import {
   type ArticleSearchParams,
 } from "@/lib/articles";
 
+export const metadata = {
+  title: "文章库 | 从零学习美股",
+  description: "用短篇内容拆解美股学习中的关键概念。按市场基础、财报、估值、宏观、行业研究和交易复盘分类。",
+};
+
 type ArticlesPageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };

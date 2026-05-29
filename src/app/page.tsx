@@ -3,6 +3,11 @@ import { ArticleCard } from "@/components/ArticleCard/ArticleCard";
 import { getAllArticles, getArticleCategories } from "@/lib/articles";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "从零学习美股",
+  description: "用第一性原理理解市场、财报、估值、宏观和交易复盘。面向从零开始学习美股的中文用户，不构成投资建议。",
+};
+
 const entries = [
   { href: "/learn", title: "学习路线", description: "按市场、财报、估值、宏观、行业和复盘逐步推进。", label: "Path" },
   { href: "/articles", title: "文章库", description: "用短文章建立可复用的基础概念和分析框架。", label: "Library" },

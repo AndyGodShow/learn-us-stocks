@@ -67,7 +67,7 @@ export function CalculatorCard({ kind, title, description, explanation }: Calcul
 
     return [
       { label: "参考市值", value: formatNumber(a * b) },
-      { label: "约", value: `${formatNumber((a * b) / 100000000)} 亿美元` },
+      { label: "约", value: `${formatNumber((a * b) / 100000000)} 亿（按输入单位）` },
     ];
   }, [first, second, third, kind]);
 

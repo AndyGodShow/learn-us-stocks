@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getAllArticles } from "@/lib/articles";
 import { caseStudies, getCaseStudyByTicker } from "@/lib/cases";
 import styles from "./page.module.css";
 
@@ -71,11 +72,16 @@ export default async function CaseDetailPage({ params }: CaseDetailPageProps) {
           <section>
             <h2>关联文章</h2>
             <div className={styles.relatedLinks}>
-              {study.relatedArticles.map((slug) => (
-                <Link href={`/articles/${slug}`} key={slug}>
-                  {slug}
-                </Link>
-              ))}
+              {(() => {
+                const articlesMap = new Map(
+                  getAllArticles().map((a) => [a.slug, a.title]),
+                );
+                return study.relatedArticles.map((slug) => (
+                  <Link href={`/articles/${slug}`} key={slug}>
+                    {articlesMap.get(slug) ?? slug}
+                  </Link>
+                ));
+              })()}
             </div>
           </section>
         </div>

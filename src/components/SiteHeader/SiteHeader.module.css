@@ -53,6 +53,12 @@
   background: rgba(17, 26, 36, 0.74);
 }
 
+.nav a.navLinkActive {
+  border-color: rgba(110, 231, 183, 0.35);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
 @media (max-width: 760px) {
   .inner {
     align-items: flex-start;

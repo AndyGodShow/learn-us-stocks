@@ -1,5 +1,10 @@
 import { CalculatorCard } from "@/components/CalculatorCard/CalculatorCard";
 
+export const metadata = {
+  title: "工具箱 | 从零学习美股",
+  description: "本地计算盈亏、仓位和市值，不连接后端，不接实时行情接口。计算结果仅供学习和复盘参考。",
+};
+
 const calculators = [
   {
     kind: "profitLoss",

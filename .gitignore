@@ -25,3 +25,4 @@ pnpm-debug.log*
 # OS and editor files
 .DS_Store
 *.swp
+.vscode/

@@ -1,6 +1,11 @@
 import { ReviewCard } from "@/components/ReviewCard/ReviewCard";
 import { tradeReviews } from "@/lib/reviews";
 
+export const metadata = {
+  title: "交易复盘 | 从零学习美股",
+  description: "展示复盘模板和记录方式，训练计划、执行和反馈循环。不构成实际交易建议。",
+};
+
 export default function ReviewsPage() {
   return (
     <main>

@@ -2,6 +2,11 @@ import { IndustryCard } from "@/components/IndustryCard/IndustryCard";
 import { getAllIndustries } from "@/lib/industries";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "行业地图 | 从零学习美股",
+  description: "从商业模式、产业链、关键指标和估值逻辑理解不同美股板块。不做行情跟踪或买卖判断，专注行业研究框架。",
+};
+
 export default function IndustriesPage() {
   const industries = getAllIndustries();
 

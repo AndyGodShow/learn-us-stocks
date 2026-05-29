@@ -180,10 +180,21 @@ export function getArticleBySlug(slug: string): Article | undefined {
   return readArticleFile(fileName);
 }
 
-export function getAllArticles(): Article[] {
-  return sortArticles(getArticleSlugs()
-    .map((slug) => getArticleBySlug(slug))
-    .filter((article): article is Article => article !== undefined));
+let _articlesCache: Article[] | null = null;
+
+export function getAllArticles(): readonly Article[] {
+  if (_articlesCache && process.env.NODE_ENV === "production") {
+    return _articlesCache;
+  }
+
+  const articles = sortArticles(
+    getArticleSlugs()
+      .map((slug) => getArticleBySlug(slug))
+      .filter((article): article is Article => article !== undefined),
+  );
+
+  _articlesCache = articles;
+  return articles;
 }
 
 export function getArticleCategories(): string[] {

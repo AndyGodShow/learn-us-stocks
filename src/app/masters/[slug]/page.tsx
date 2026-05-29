@@ -157,7 +157,7 @@ export default async function MasterDetailPage({ params }: MasterDetailPageProps
               <div className={styles.sourceItem} key={`${source.title}-${source.source}`}>
                 <span>{source.source}</span>
                 {source.url ? (
-                  <a href={source.url} target="_blank" rel="noreferrer">
+                  <a href={source.url} target="_blank" rel="noopener noreferrer">
                     {source.title}
                   </a>
                 ) : (

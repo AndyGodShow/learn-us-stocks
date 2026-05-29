@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NavLink } from "./NavLink";
 import styles from "./SiteHeader.module.css";
 
 const navItems = [
@@ -21,9 +22,7 @@ export function SiteHeader() {
         </Link>
         <nav className={styles.nav} aria-label="主导航">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
+            <NavLink key={item.href} href={item.href} label={item.label} />
           ))}
         </nav>
       </div>

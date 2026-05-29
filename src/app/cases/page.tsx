@@ -2,6 +2,11 @@ import { CaseStudyCard } from "@/components/CaseStudyCard/CaseStudyCard";
 import { caseStudies } from "@/lib/cases";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "公司案例 | 从零学习美股",
+  description: "用真实公司拆解商业模式、财务变量、估值逻辑和常见误区。所有案例仅作学习样本，不构成投资建议。",
+};
+
 export default function CasesPage() {
   return (
     <main>
